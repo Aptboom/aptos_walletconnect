@@ -13,5 +13,5 @@ We will keep adding more wallets as they become more popular.
 
 To Run Locally:
 
-npm run build 
+npm run build \
 npm run start
