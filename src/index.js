@@ -18,6 +18,7 @@ async function switch_wallet() {
 
   var wall_type = document.getElementById("wall_name").value;
   if (wall_type == "w_pet"){
+    
     const getAptosWallet = () => {
       if ('aptos' in window) {
         return window.aptos;
@@ -29,7 +30,7 @@ async function switch_wallet() {
   try {
     const response = await wallet.connect();
     console.log(response.address); 
-  
+    localStorage.setItem("wallet_type", "Petra");
     //const account = await wallet.account();
     //console.log(account);
   } catch (error) {
@@ -37,26 +38,30 @@ async function switch_wallet() {
   }
   }
   else if (wall_type == "w_mar"){
+    localStorage.setItem("wallet_type", "Martian");
     const response = await window.martian.connect();
     console.log(response.address);
   }
   else if (wall_type == "w_pon"){
+    
     detectProvider()
     .then(async provider => {
       try {
         const account = await provider.connect();
         console.log(account.address);
-        
+        localStorage.setItem("wallet_type", "Pontem");
       } catch (e) {
         console.log(e); 
       }
     })
   }
   else if (wall_type == "w_ris"){
+    localStorage.setItem("wallet_type", "Rise");
     const response = await window.rise.connect()
     console.log(response.address);
   }
   else if (wall_type == "w_spa"){
+    localStorage.setItem("wallet_type", "Spacecy");
     const response = await window.spacecy.connect();
     
     const account = await window.spacecy.account();
@@ -64,6 +69,7 @@ async function switch_wallet() {
     
   }
   else {
+    localStorage.setItem("wallet_type", "Unidentified");
     console.log("Wallet Unidentified");
   }
 }
